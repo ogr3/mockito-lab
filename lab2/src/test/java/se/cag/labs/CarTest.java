@@ -1,7 +1,7 @@
 package se.cag.labs;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
@@ -11,7 +11,7 @@ public class CarTest {
     private Engine engine;
     private FuelTank fuelTank;
 
-    @Before
+    @BeforeEach
     public void setup() {
         engine = new Engine();
         fuelTank = new FuelTank();

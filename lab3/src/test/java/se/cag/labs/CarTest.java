@@ -1,12 +1,14 @@
 package se.cag.labs;
 
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import org.mockito.Mockito;
 
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 public class CarTest {
@@ -14,10 +16,7 @@ public class CarTest {
     private Engine engine;
     private FuelTank fuelTank;
 
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
-
-    @Before
+    @BeforeEach
     public void setup() {
         engine = Mockito.mock(Engine.class);
         fuelTank = Mockito.mock(FuelTank.class);
@@ -44,34 +43,32 @@ public class CarTest {
 
     @Test
     public void start_NoFuel() {
-        expectedException.expect(IllegalStateException.class);
-        expectedException.expectMessage("no fuel");
-
         when(engine.isRunning()).thenReturn(false);
         when(fuelTank.getFuel()).thenReturn(0);
 
-        car.start();
+        assertThrows(IllegalStateException.class, () -> {
+            car.start();
+        },"no fuel");
+
     }
 
     @Test
     public void start_IsRunning() {
-        expectedException.expect(IllegalStateException.class);
-        expectedException.expectMessage("already running");
-
         when(fuelTank.getFuel()).thenReturn(100);
         when(engine.isRunning()).thenReturn(true);
 
-        car.start();
+        assertThrows(IllegalStateException.class, () -> {
+            car.start();
+        }, "already running");
     }
 
     @Test
     public void start_DidNotStart() {
-        expectedException.expect(IllegalStateException.class);
-        expectedException.expectMessage("Started engine but isn't running");
-
         when(engine.isRunning()).thenReturn(false, false);
         when(fuelTank.getFuel()).thenReturn(100);
 
-        car.start();
+        assertThrows(IllegalStateException.class, () -> {
+            car.start();
+        }, "Started engine but isn't running");
     }
 }
