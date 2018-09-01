@@ -6,6 +6,8 @@ import org.junit.Test;
 public class CarTest {
 
     private Car car;
+
+    // Replace Engine & FuelTank for mocked objects
     private Engine engine;
     private FuelTank fuelTank;
 
@@ -22,6 +24,9 @@ public class CarTest {
         car = new Car(engine, fuelTank);
     }
 
+    /**
+     * Tests that the car can be started without any exceptions
+     */
     @Test
     public void carShouldStart() {
         //TODO: Flytta in till facit
