@@ -25,6 +25,9 @@ public class CustomerServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
+    /**
+     * Tests that mocks the Dao
+     */
     @Test
     public void testAddCustomer_shouldReturnFalseIfCustomerExists() {
 
@@ -35,6 +38,9 @@ public class CustomerServiceTest {
         assertFalse(result);
     }
 
+    /**
+     * Tests that mocks the Dao
+     */
     @Test
     public void testAddCustomer_shouldReturnTrueIfCustomerDoesntExist() {
 
@@ -46,6 +52,9 @@ public class CustomerServiceTest {
         assertTrue(result);
     }
 
+    /**
+     * Test that verifies that methods has been called
+     */
     @Test
     public void verifyThatMethodIsCalled() {
 
