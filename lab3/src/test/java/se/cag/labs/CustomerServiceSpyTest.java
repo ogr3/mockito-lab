@@ -36,6 +36,7 @@ public class CustomerServiceSpyTest {
         assertTrue(service.addCustomer(customer));
 
         verify(daoSpy).save(any(Customer.class));
+        //the above is similar to :  verify(daoMock, times(1)).save(any(Customer.class));
 
         verify(daoSpy, times(1)).exists(anyString());
 
