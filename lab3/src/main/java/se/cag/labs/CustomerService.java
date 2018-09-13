@@ -16,6 +16,14 @@ public class CustomerService {
         return customerDao.save(customer);
     }
 
+    public boolean updateCustomer(Customer customer) {
+        if(customerDao.exists(customer.getCustomerId())){
+            System.out.println("real update customer");
+            return customerDao.save(customer);
+        }
+        return false;
+    }
+
     public CustomerDao getCustomerDao() {
         return customerDao;
     }

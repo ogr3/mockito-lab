@@ -18,8 +18,11 @@ public class CustomerServiceSpyTest {
     @InjectMocks
     private CustomerService service;
 
+    Customer customer;
+
     @BeforeEach
     public void setUp() {
+        customer = new Customer("Ross", "123456");
         MockitoAnnotations.initMocks(this);
     }
 
@@ -31,7 +34,7 @@ public class CustomerServiceSpyTest {
     @Test
     public void test() {
 
-        Customer customer = new Customer("Ross", "123456");
+        //Customer customer = new Customer("Ross", "123456");
 
         assertTrue(service.addCustomer(customer));
 
@@ -41,5 +44,14 @@ public class CustomerServiceSpyTest {
         verify(daoSpy, times(1)).exists(anyString());
 
         verify(daoSpy, never()).delete(any(Customer.class));
+    }
+
+    @Test
+    public void spyWithMock() {
+        Customer updateCustomer = new Customer("Joe", "555555");
+
+        doReturn(true).when(daoSpy).save(updateCustomer);
+
+        assertTrue(service.updateCustomer(updateCustomer));
     }
 }

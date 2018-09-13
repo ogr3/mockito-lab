@@ -13,6 +13,7 @@ public class CustomerDao {
     }
 
     public boolean exists(String phoneNumber) {
+        System.out.println("Real CustomerDao exist...");
         return existingCustomerIds.contains(phoneNumber);
     }
 
