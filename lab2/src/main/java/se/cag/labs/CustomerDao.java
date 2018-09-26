@@ -13,7 +13,6 @@ public class CustomerDao {
 
         //TODO: fixa så att inte exists används
         Optional<Customer> first = customers.stream()
-                //.filter(customer1 -> customer1.getCustomerId().equals(customer.getCustomerId()))
                 .filter(c -> c.getCustomerId().equals(customer.getCustomerId()))
                 .findFirst();
 

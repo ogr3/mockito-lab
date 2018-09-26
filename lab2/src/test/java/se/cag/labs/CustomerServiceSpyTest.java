@@ -32,9 +32,13 @@ public class CustomerServiceSpyTest {
     /**
      * Övning 4. Test av verify med Spy.
      *
-     * Testa att uppdatera en existerande kund och att CustomerDao.update() har anropats.
-     * Verifiera vilka metoder som anropats eller inte och hur många gånger.
-     * daoSpy.save, daoSpy.update och daoSpy.exists
+     * Testa att uppdatera en existerande kund.
+     *
+     * Verifiera att metoderna anropas rätt antal gånger:
+     *
+     *  - daoSpy.exists() - ? gånger
+     *  - daoSpy.update() - ? gånger
+     *  - daoSpy.save() - ? gånger
      *
      *
      *
@@ -45,6 +49,7 @@ public class CustomerServiceSpyTest {
         service.addCustomer(new Customer("addName", "1122333"));
         service.updateCustomer(new Customer("updateName", "1122333"));
 
+        //TODO: Lägg till dina verifieringar här!
         verify(daoSpy, times(2)).exists("1122333");
         verify(daoSpy).update(any(Customer.class));
         verify(daoSpy, times(1)).save(any(Customer.class));

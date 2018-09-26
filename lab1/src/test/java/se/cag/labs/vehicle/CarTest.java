@@ -13,16 +13,30 @@ public class CarTest {
 
     @BeforeEach
     public void setup() {
+
+        //TODO: Ersätt Engine och FuelTank med mockar
+        //fuelTank = Mockito.mock(FuelTank.class);
+        //engine = Mockito.mock(Engine.class);
+
         engine = new Engine();
         fuelTank = new FuelTank();
         fuelTank.setFuel(65);
 
-        //TODO: Flytta in till facit
-        //fuelTank = Mockito.mock(FuelTank.class);
-        //fuelTank = Mockito.mock(FuelTank.class);
 
         car = new Car(engine, fuelTank);
     }
+
+    /**
+     * Övning 1. Byt utt Engine och FuelTank mot mockade objekt. Använd inte annotering för detta.
+     *
+     */
+
+    /**
+     * Övning 2. Byt utt Engine och FuelTank mot mockade objekt. Använd annotering för detta.
+     *
+     */
+
+
 
     /**
      * Tests that the car can be started without any exceptions

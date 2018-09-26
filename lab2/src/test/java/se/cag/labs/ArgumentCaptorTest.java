@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
 
-public class ArgumentCaptureTest {
+public class ArgumentCaptorTest {
 
     @Spy
     private CustomerDao daoSpy;
@@ -25,10 +25,10 @@ public class ArgumentCaptureTest {
     }
 
     /**
-     * Test av Argument capture.
+     * Övning 6. Test av Argument capture.
      *
-     * Skapa ett Customerobjekt och verifiera att det är just det objektet som används
-     * i CustomerDao.save() genom att använda ArgumentCapture.
+     * Skapa ett objekt av Customer och verifiera att det är just det objektet som används
+     * i CustomerDao.save(). Använd ArgumentCapture.
      */
     @Test
     public void addCustomer() {
