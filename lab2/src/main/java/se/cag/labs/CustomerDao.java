@@ -1,29 +1,52 @@
 package se.cag.labs;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerDao {
 
-    List existingCustomerIds = Arrays.asList("1122333", "343434", "555555");
+    List<Customer> customers = new ArrayList<>();
 
     public boolean update(Customer customer) {
         System.out.println("Real CustomerDao is updating customer...");
-        return true;
+
+        //TODO: fixa så att inte exists används
+        Optional<Customer> first = customers.stream()
+                //.filter(customer1 -> customer1.getCustomerId().equals(customer.getCustomerId()))
+                .filter(c -> c.getCustomerId().equals(customer.getCustomerId()))
+                .findFirst();
+
+        if(first.isPresent()) {
+            customers.remove(first.get());
+        }
+            return customers.add(customer);
     }
 
-    public boolean exists(String phoneNumber) {
+    public boolean exists(String customerId) {
         System.out.println("Real CustomerDao exist...");
-        return existingCustomerIds.contains(phoneNumber);
+
+        return customers.stream()
+                .anyMatch(customer -> customer.getCustomerId().equals(customerId));
+
     }
 
     public boolean save(Customer customer) {
         System.out.println("Real CustomerDao is saving customer...");
-        return true;
+
+        return customers.add(customer);
     }
 
     public boolean delete(Customer customer) {
         System.out.println("Real CustomerDao is deleting customer...");
-        return true;
+
+        return customers.remove(customer);
+    }
+
+    public Optional<Customer> get(String customerId) {
+        System.out.println("Real CustomerDao is getting customer...");
+        return customers.stream()
+                .filter(customer -> customer.getCustomerId().equals(customerId))
+                .findFirst();
     }
 }

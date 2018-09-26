@@ -1,6 +1,7 @@
 package se.cag.labs;
 
 import javax.inject.Inject;
+import java.util.Optional;
 
 public class CustomerService {
 
@@ -20,8 +21,12 @@ public class CustomerService {
         if(customerDao.exists(customer.getCustomerId())){
             return customerDao.update(customer);
         } else {
-            return addCustomer(customer);
+            return customerDao.save(customer);
         }
+    }
+
+    public Optional<Customer> getCustomer(String customerId) {
+        return customerDao.get(customerId);
     }
 
     public CustomerDao getCustomerDao() {
