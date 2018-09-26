@@ -1,4 +1,4 @@
-package se.cag.labs;
+package se.cag.labs.vehicle;
 
 public class Car {
     
