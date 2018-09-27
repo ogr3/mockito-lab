@@ -5,14 +5,14 @@ public class Engine {
     private boolean running;
 
     public boolean isRunning() {
-        return running;
+        return this.running;
     }
 
     public void start() {
-        running = true;
+        this.running = true;
     }
 
     public void stop() {
-        running = false;
+        this.running = false;
     }
 }
