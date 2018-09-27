@@ -5,7 +5,7 @@ public class FuelTank {
     private int fuel;
 
     public int getFuel() {
-        return fuel;
+        return this.fuel;
     }
 
     public void setFuel(int fuel) {
