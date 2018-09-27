@@ -1,53 +1,46 @@
 package se.cag.labs.vehicle;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
-    private Car car;
-
-    // Replace Engine & FuelTank for mocked objects
-    private Engine engine;
-    private FuelTank fuelTank;
-
-    @BeforeEach
-    public void setup() {
-
-        //TODO: Ersätt Engine och FuelTank med mockar
-        //fuelTank = Mockito.mock(FuelTank.class);
-        //engine = Mockito.mock(Engine.class);
-
-        engine = new Engine();
-        fuelTank = new FuelTank();
-        fuelTank.setFuel(65);
-
-
-        car = new Car(engine, fuelTank);
-    }
 
     /**
-     * Övning 1. Byt utt Engine och FuelTank mot mockade objekt. Använd inte annotering för detta.
+     * ÖVNING 1 -  testar att bilen kan startas utan att exceptions kastas.
      *
-     */
-
-    /**
-     * Övning 2. Byt utt Engine och FuelTank mot mockade objekt. Använd annotering för detta.
+     * Byt ut Engine och FuelTank mot mockade objekt.
+     * Använd inte annotering för detta.
      *
-     */
 
-
-
-    /**
-     * Tests that the car can be started without any exceptions
      */
     @Test
-    public void carShouldStart() {
-        //TODO: Flytta in till facit
-        //when(engine.isRunning()).thenReturn(false, true);
-        //when(fuelTank.getFuel()).thenReturn(65);
+    public void shouldStart_WithoutExceptions_1() {
+        //TODO: Ersätt Engine och FuelTank med mockar
+        Engine engine = new Engine();
+        FuelTank fuelTank = new FuelTank();
+        fuelTank.setFuel(55);
+
+        Car car = new Car(engine, fuelTank);
 
         car.start();
     }
 
+    /**
+     * ÖVNING 2 - testar att bilen kan startas utan att exceptions kastas.
+     *
+     * Byt utt Engine och FuelTank mot mockade objekt.
+     * Använd annotering för detta.
+     *
+     *
+     */
+    @Test
+    public void shouldStart_WithoutExceptions_2() {
+        Engine engine = new Engine();
+        FuelTank fuelTank = new FuelTank();
+        fuelTank.setFuel(55);
+
+        Car car = new Car(engine, fuelTank);
+
+        car.start();
+    }
 }
