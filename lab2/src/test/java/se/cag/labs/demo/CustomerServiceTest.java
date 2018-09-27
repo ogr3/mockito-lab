@@ -1,10 +1,13 @@
-package se.cag.labs;
+package se.cag.labs.demo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import se.cag.labs.Customer;
+import se.cag.labs.CustomerDao;
+import se.cag.labs.CustomerService;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

@@ -13,6 +13,9 @@ import static org.mockito.Mockito.verify;
 
 public class ArgumentCaptorTest {
 
+    private static final String CUSTOMER_ID = "1234567";
+    private static final String NAME = "Rosco";
+
     @Spy
     private CustomerDao daoSpy;
 
@@ -25,14 +28,14 @@ public class ArgumentCaptorTest {
     }
 
     /**
-     * Övning 6. Test av Argument capture.
+     * Övning 6. Test av Argument captor.
      *
      * Skapa ett objekt av Customer och verifiera att det är just det objektet som används
-     * i CustomerDao.save(). Använd ArgumentCapture.
+     * i CustomerDao.save(). Använd ArgumentCaptor.
      */
     @Test
     public void addCustomer() {
-        Customer customer = new Customer("Rosco", "1234567");
+        Customer customer = new Customer(NAME, CUSTOMER_ID);
         service.addCustomer(customer);
 
         ArgumentCaptor<Customer> argumentCaptor = ArgumentCaptor.forClass(Customer.class);

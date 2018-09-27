@@ -30,17 +30,17 @@ public class SpyTest {
     }
 
     /**
-     * ÖVNING 4. Testar att det går att uppdatera en existerande kund
+     * ÖVNING 4. Testar att det går att uppdatera en existerande kund.
      *
      * Ta hjälp av Spy för att testa att metoderna i CustomerDao anropas som det är tänkt.
      *
-     * Verifiera att metoderna anropas rätt antal gånger:
+     * Verifiera att metoderna anropas och att de anropas rätt antal gånger:
      *
      *  - daoSpy.exists() - ? gånger
      *  - daoSpy.update() - ? gånger
      *  - daoSpy.save() - ? gånger
      *
-     * Kontrollera även att Customer har det uppdaterade namnet.
+     * Kontrollera även att en uppdaterad Customer har fått rätt namn.
      *
      */
     @Test
