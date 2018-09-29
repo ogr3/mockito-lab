@@ -6,8 +6,15 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * Project:mockitolab
@@ -36,7 +43,15 @@ public class AddTest {
 
     int failSum = this.add.add(5,3);
     assertNotEquals(8,failSum);
+  }
 
-
+  @Test
+  public void badExampleOfMock() {
+    List<String> lista = new ArrayList<>();
+    lista.add("ett dåligt exempel");
+    lista.add("ännu ett dåligt exempel");
+    List<String> listMock = mock(List.class);
+    when(listMock.toArray()).thenReturn(lista.toArray());
+    assertTrue(Arrays.equals(listMock.toArray(),lista.toArray()));
   }
 }
