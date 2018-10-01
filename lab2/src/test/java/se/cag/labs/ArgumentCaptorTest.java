@@ -28,7 +28,7 @@ public class ArgumentCaptorTest {
     }
 
     /**
-     * Övning 6. Test av Argument captor.
+     * Övning 7. Test av Argument captor.
      *
      * Skapa ett objekt av Customer och verifiera att det är just det objektet som används
      * i CustomerDao.save(). Använd ArgumentCaptor.

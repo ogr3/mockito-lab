@@ -36,7 +36,9 @@ public class CustomerDao {
     public boolean save(Customer customer) {
         LOG.log(Level.INFO, "Real CustomerDao: saving customer...");
 
-        return customers.add(customer);
+        boolean add = customers.add(customer);
+        System.out.println("customers = " + customers);
+        return add;
     }
 
     public boolean delete(Customer customer) {

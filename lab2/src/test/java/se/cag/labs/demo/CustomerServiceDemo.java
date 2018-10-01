@@ -15,7 +15,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
-public class CustomerServiceTest {
+public class CustomerServiceDemo {
 
     @Mock
     private CustomerDao daoMock;
@@ -35,6 +35,7 @@ public class CustomerServiceTest {
     public void testAddCustomer_shouldReturnFalseIfCustomerExists() {
 
         when(daoMock.exists(anyString())).thenReturn(true);
+        when(daoMock.save(any(Customer.class))).thenReturn(true);
 
         boolean result = service.addCustomer(new Customer("Ross", "1122333"));
 

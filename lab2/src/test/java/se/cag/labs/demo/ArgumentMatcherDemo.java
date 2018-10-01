@@ -10,13 +10,12 @@ import se.cag.labs.CustomerDao;
 import se.cag.labs.CustomerService;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.startsWith;
 import static org.mockito.Mockito.when;
 
-public class VerifyTest {
-
+public class ArgumentMatcherDemo {
     @Mock
     private CustomerDao daoMock;
 
@@ -28,15 +27,18 @@ public class VerifyTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    /**
-     * Test av Argument matcher.
-     *
-     * Testa att ett exception kastas om en kund har ett id som börjar på '031'.
-     *
-     * Det finns 2 sätt att testa exceptions:
-     *  - try/catch
-     *  - assertThrows (JUnit 5)
-     */
+    @Test
+    public void testAddCustomer_shouldReturnFalseIfCustomerExists() {
+
+        when(daoMock.exists(anyString())).thenReturn(false);
+        when(daoMock.save(any(Customer.class))).thenReturn(true);
+
+
+        boolean result = service.addCustomer(new Customer("Nisse", "1122333"));
+
+        assertTrue(result);
+    }
+
     @Test
     public void shouldThowException_ifStartWith031() {
 
@@ -53,24 +55,5 @@ public class VerifyTest {
     }
 
 
-
-    /**
-     * Test av verify.
-     *
-     * Testa att uppdatera en existerande kund och att CustomerDao.update() har anropats.
-     *
-     *
-     *
-     */
-    @Test
-    public void testUpdateCustomer() {
-
-        when(daoMock.exists(anyString())).thenReturn(true);
-
-        boolean result = service.updateCustomer(new Customer("Ross", "1122333"));
-
-        verify(daoMock).update(any(Customer.class));
-        verify(daoMock, times(0)).save(any(Customer.class));
-    }
 
 }
