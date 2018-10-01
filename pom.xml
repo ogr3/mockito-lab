@@ -21,10 +21,7 @@
     </properties>
 
     <modules>
-        <module>lab1</module>
-        <module>lab2</module>
-        <module>lab3</module>
-        <module>RestService</module>
+        <module>mockitolab</module>
     </modules>
 
 
