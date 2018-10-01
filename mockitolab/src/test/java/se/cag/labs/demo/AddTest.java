@@ -1,4 +1,4 @@
-package se.cag.labs;
+package se.cag.labs.demo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
