@@ -12,10 +12,6 @@ public class Car {
 
     public void start() {
 
-        if(engine.isRunning()) {
-            throw new IllegalStateException("Engine already running");
-        }
-
         if(fuelTank.getFuel() <= 0) {
             throw new IllegalStateException("Can't start: no fuel");
         }

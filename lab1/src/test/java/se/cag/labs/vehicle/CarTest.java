@@ -1,26 +1,42 @@
 package se.cag.labs.vehicle;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class CarTest {
 
+    @Mock
+    Engine engineMockAnnotate;
+
+    @Mock
+    FuelTank fuelTankMockAnnotate;
+
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     /**
      * ÖVNING 1 -  testar att bilen kan startas utan att exceptions kastas.
      *
-     * Byt ut Engine och FuelTank mot mockade objekt.
+     * Byt ut FuelTank mot mockade objekt.
      * Använd inte annotering för detta.
      *
 
      */
     @Test
     public void shouldStart_WithoutExceptions_1() {
-        //TODO: Ersätt Engine och FuelTank med mockar
+        //TODO: Ersätt FuelTank med mock
         Engine engine = new Engine();
-        FuelTank fuelTank = new FuelTank();
-        fuelTank.setFuel(55);
+        FuelTank fuelTankMock = mock(FuelTank.class);
 
-        Car car = new Car(engine, fuelTank);
+        when(fuelTankMock.getFuel()).thenReturn(55);
+        Car car = new Car(engine, fuelTankMock);
 
         car.start();
     }
@@ -35,11 +51,11 @@ public class CarTest {
      */
     @Test
     public void shouldStart_WithoutExceptions_2() {
-        Engine engine = new Engine();
-        FuelTank fuelTank = new FuelTank();
-        fuelTank.setFuel(55);
 
-        Car car = new Car(engine, fuelTank);
+        when(fuelTankMockAnnotate.getFuel()).thenReturn(1);
+        when(engineMockAnnotate.isRunning()).thenReturn(true);
+
+        Car car = new Car(engineMockAnnotate, fuelTankMockAnnotate);
 
         car.start();
     }
