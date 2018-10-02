@@ -28,12 +28,4 @@ public class CustomerService {
     public Optional<Customer> getCustomer(String customerId) {
         return customerDao.get(customerId);
     }
-
-    public CustomerDao getCustomerDao() {
-        return customerDao;
-    }
-
-    public void setCustomerDao(CustomerDao customerDao) {
-        this.customerDao = customerDao;
-    }
 }

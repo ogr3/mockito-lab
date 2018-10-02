@@ -6,14 +6,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.startsWith;
-import static org.mockito.Mockito.*;
-
 public class VerifyTest {
+
+    private static final String CUSTOMER_ID = "1122333";
+    private static final String NAME = "Ross";
 
     @Mock
     private CustomerDao daoMock;
@@ -28,30 +24,32 @@ public class VerifyTest {
 
 
     /**
-     * Övning 4a. Test av verify.
+     * Övning 4A. Test av verify.
      *
      * Testa att uppdatera en existerande kund och att CustomerDao.update() har anropats.
-     * Kontrollera att inte save() anropas när man gör en update
+     * Kontrollera även att save() INTE anropas när man gör en update.
      *
      *
      */
     @Test
-    public void testUpdateCustomer() {
+    public void updateCustomer_shouldCallCorrectMethods() {
 
-        when(daoMock.exists(anyString())).thenReturn(true);
 
-        boolean result = service.updateCustomer(new Customer("Ross", "1122333"));
+        service.updateCustomer(new Customer(NAME, CUSTOMER_ID));
 
-        verify(daoMock).update(any(Customer.class));
-        verify(daoMock, times(0)).save(any(Customer.class));
     }
 
     /**
-     * Övning 4b. Test av verify.
+     * Övning 4B. Test av verify.
      *
-     *
-     *
-     *
+     * Testa att lägga till en ny kund service.addCustomer() och verifiera att
+     *  - CustomerDao.exists() anropas
+     *  - CustomerDao.save() anropas
      */
+    @Test
+    public void saveCustomer_shouldCallCorrectMethods() {
 
+        service.addCustomer(new Customer(NAME, CUSTOMER_ID));
+
+    }
 }
