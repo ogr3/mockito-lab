@@ -6,12 +6,6 @@ import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
-
 public class SpyTest {
 
     private static final String NAME = "Johnny";
@@ -49,14 +43,6 @@ public class SpyTest {
         service.addCustomer(new Customer(NAME, CUSTOMER_ID));
         service.updateCustomer(new Customer(UPDATED_NAME, CUSTOMER_ID));
 
-        //TODO: Lägg till dina verifieringar här!
-        verify(daoSpy, times(2)).exists(CUSTOMER_ID);
-        verify(daoSpy).update(any(Customer.class));
-        verify(daoSpy, times(1)).save(any(Customer.class));
-
-        Optional<Customer> customer = service.getCustomer(CUSTOMER_ID);
-        assertTrue(customer.isPresent());
-        assertEquals(UPDATED_NAME, customer.get().getName());
     }
 
 
@@ -84,17 +70,6 @@ public class SpyTest {
     @Test
     public void testUpdateCustomerWithMock() {
 
-        new Customer(NAME, CUSTOMER_ID);
-        doReturn(true).when(daoSpy).exists(CUSTOMER_ID);
         service.updateCustomer(new Customer(UPDATED_NAME, CUSTOMER_ID));
-
-        verify(daoSpy, times(1)).exists(CUSTOMER_ID);
-        verify(daoSpy).update(any(Customer.class));
-        verify(daoSpy, times(0)).save(any(Customer.class));
-
-        Optional<Customer> customer = service.getCustomer(CUSTOMER_ID);
-        assertTrue(customer.isPresent());
-        assertEquals(UPDATED_NAME, customer.get().getName());
-
     }
 }
