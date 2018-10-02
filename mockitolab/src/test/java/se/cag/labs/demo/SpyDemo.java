@@ -8,8 +8,6 @@ import se.cag.labs.vehicle.Car;
 import se.cag.labs.vehicle.Engine;
 import se.cag.labs.vehicle.FuelTank;
 
-import static org.mockito.Mockito.*;
-
 public class SpyDemo {
 
     @Spy
@@ -24,36 +22,36 @@ public class SpyDemo {
     }
 
     /**
-     * Demo att koden körs i det riktiga objektet
+     * När man använder Spy kommer koden i objektet att köras.
      */
     @Test
-    public void shouldExecuteTheRealObjects() {
+    public void should_ExecuteTheRealObject() {
 
-        fuelSpy.setFuel(44);
+        // Set fuel i spy
 
         Car car = new Car(engineSpy, fuelSpy);
-
         car.start();
 
-        verify(engineSpy, times(0)).stop();
+        // Verifiera att Engine.stop() inte anropats
     }
 
 
     /**
-     * Demo att koden INTE körs i det riktiga objektet
+     * När man använder Spy kommer koden i objektet att köras.
+     *
+     * MEN, det går att undvikas...
+     *
      */
     @Test
-    public void spyWithMock() {
-        fuelSpy.setFuel(44);
+    public void shouldNot_ExecuteTheRealObject() {
 
-        when(fuelSpy.getFuel()).thenReturn(0);
+        // Set fuel i spy
 
-        //doReturn(33).when(fuelSpy).getFuel();
+        // doReturn
         Car car = new Car(engineSpy, fuelSpy);
 
         car.start();
 
-        verify(engineSpy, times(0)).stop();
+        // Verifiera att Engine.stop() inte anropats
     }
-
 }

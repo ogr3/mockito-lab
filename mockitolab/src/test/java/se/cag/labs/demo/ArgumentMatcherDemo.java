@@ -10,12 +10,13 @@ import se.cag.labs.CustomerDao;
 import se.cag.labs.CustomerService;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.startsWith;
-import static org.mockito.Mockito.when;
 
 public class ArgumentMatcherDemo {
+
+    private static final String NISSE = "Nisse";
+    private static final String BAD_CUSTOMER_ID = "0313332333";
+    private static final String CUSTOMER_ID = "1122333";
+
     @Mock
     private CustomerDao daoMock;
 
@@ -30,22 +31,20 @@ public class ArgumentMatcherDemo {
     @Test
     public void testAddCustomer_shouldReturnFalseIfCustomerExists() {
 
-        when(daoMock.exists(anyString())).thenReturn(false);
-        when(daoMock.save(any(Customer.class))).thenReturn(true);
+        // Mocks with argument matchers on customerId and customer
 
-
-        boolean result = service.addCustomer(new Customer("Nisse", "1122333"));
+        boolean result = service.addCustomer(new Customer(NISSE, CUSTOMER_ID));
 
         assertTrue(result);
     }
 
     @Test
-    public void shouldThowException_ifStartWith031() {
+    public void shouldThrowException_whenBadPrefix() {
 
-        when(daoMock.exists(startsWith("031"))).thenThrow(RuntimeException.class);
+        // Mocks with argument matcher startsWith("")
 
         try {
-            service.addCustomer(new Customer("Ross", "0313332333"));
+            service.addCustomer(new Customer(NISSE, BAD_CUSTOMER_ID));
             fail("Men va fan!");
         } catch(Exception e) {
             assertEquals(RuntimeException.class, e.getClass());
@@ -53,7 +52,4 @@ public class ArgumentMatcherDemo {
 
         //TODO: Gör även samma sak fast med assertThrows
     }
-
-
-
 }

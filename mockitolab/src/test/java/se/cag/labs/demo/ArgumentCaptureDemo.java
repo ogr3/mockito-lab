@@ -2,18 +2,13 @@ package se.cag.labs.demo;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import se.cag.labs.vehicle.Car;
 import se.cag.labs.vehicle.Engine;
 import se.cag.labs.vehicle.FuelTank;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.*;
-
 public class ArgumentCaptureDemo {
-
 
     @Spy
     Engine engineSpy;
@@ -32,16 +27,11 @@ public class ArgumentCaptureDemo {
     @Test
     public void shouldExecuteTheRealObjects() {
 
-        ArgumentCaptor<Integer> argumentCaptor = ArgumentCaptor.forClass(Integer.class);
+        // ArgumentCaptor here
 
         Car car = new Car(engineSpy, fuelSpy);
         car.fillItUp();
 
-
-        verify(fuelSpy).setFuel(argumentCaptor.capture());
-
-
-        assertEquals(FuelTank.MAX, argumentCaptor.getValue().intValue());
-
+        // verify setFuel() with capture()
     }
 }
