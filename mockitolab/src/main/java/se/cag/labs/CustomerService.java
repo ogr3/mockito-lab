@@ -5,8 +5,6 @@ import java.util.Optional;
 
 public class CustomerService {
 
-    public static final String NON_ACCEPTABLE_CUSTOMER_PREFIX = "031";
-
     @Inject
     private CustomerDao customerDao;
 
