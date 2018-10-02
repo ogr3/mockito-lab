@@ -2,13 +2,9 @@ package se.cag.labs;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
 
 
 public class ArgumentCaptorTest {
@@ -38,10 +34,5 @@ public class ArgumentCaptorTest {
         Customer customer = new Customer(NAME, CUSTOMER_ID);
         service.addCustomer(customer);
 
-        ArgumentCaptor<Customer> argumentCaptor = ArgumentCaptor.forClass(Customer.class);
-
-        verify(daoSpy).save(argumentCaptor.capture());
-        assertEquals(customer, argumentCaptor.getValue());
-        assertEquals(customer, service.getCustomer(customer.getCustomerId()).get());
     }
 }
