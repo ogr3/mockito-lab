@@ -2,60 +2,44 @@ package se.cag.labs.vehicle;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class CarTest {
 
-    @Mock
-    Engine engineMockAnnotate;
-
-    @Mock
-    FuelTank fuelTankMockAnnotate;
+    private Engine engine = new Engine();
+    private FuelTank fuelTank = new FuelTank();
 
     @BeforeEach
     public void setup() {
-        MockitoAnnotations.initMocks(this);
+        fuelTank.setFuel(100);
     }
 
     /**
-     * ÖVNING 1 -  testar att bilen kan startas utan att exceptions kastas.
+     * ÖVNING 1 -  testa att bilen kan startas utan att exceptions kastas.
      *
      * Byt ut FuelTank mot mockade objekt.
      * Använd inte annotering för detta.
      *
-
      */
     @Test
-    public void shouldStart_WithoutExceptions_1() {
-        //TODO: Ersätt FuelTank med mock
-        Engine engine = new Engine();
-        FuelTank fuelTankMock = mock(FuelTank.class);
+    void shouldStart_WithoutExceptions_1() {
 
-        when(fuelTankMock.getFuel()).thenReturn(55);
-        Car car = new Car(engine, fuelTankMock);
+        Car car = new Car(engine, fuelTank);
 
         car.start();
     }
 
     /**
-     * ÖVNING 2 - testar att bilen kan startas utan att exceptions kastas.
+     * ÖVNING 2 - testa att bilen kan startas utan att exceptions kastas.
      *
-     * Byt utt Engine och FuelTank mot mockade objekt.
+     * Byt ut Engine och FuelTank mot mockade objekt.
      * Använd annotering för detta.
      *
      *
      */
     @Test
-    public void shouldStart_WithoutExceptions_2() {
+    void shouldStart_WithoutExceptions_2() {
 
-        when(fuelTankMockAnnotate.getFuel()).thenReturn(1);
-        when(engineMockAnnotate.isRunning()).thenReturn(true);
-
-        Car car = new Car(engineMockAnnotate, fuelTankMockAnnotate);
+        Car car = new Car(engine, fuelTank);
 
         car.start();
     }

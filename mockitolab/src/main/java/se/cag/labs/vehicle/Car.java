@@ -25,11 +25,6 @@ public class Car {
         System.out.println("Car started!");
     }
 
-    public boolean isRunning() {
-        return engine.isRunning();
-    }
-
-
     public void fillItUp() {
         fuelTank.setFuel(100);
     }
