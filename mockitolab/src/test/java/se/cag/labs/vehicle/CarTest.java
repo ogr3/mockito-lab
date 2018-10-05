@@ -2,17 +2,22 @@ package se.cag.labs.vehicle;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.when;
 
 public class CarTest {
 
-  private Engine engine = Mockito.mock(Engine.class);
-  private FuelTank fuelTank = Mockito.mock(FuelTank.class);
+  @Mock private Engine engine;
+  @Mock private FuelTank fuelTank;
+
+  @InjectMocks private Car car;
 
   @BeforeEach
   public void setup() {
+    MockitoAnnotations.initMocks(this);
     when(fuelTank.getFuel()).thenReturn(100);
     when(engine.isRunning()).thenReturn(true);
   }
@@ -25,7 +30,7 @@ public class CarTest {
   @Test
   void shouldStart_WithoutExceptions_1() {
 
-    Car car = new Car(engine, fuelTank);
+    // Car car = new Car(engine, fuelTank);
 
     car.start();
   }
@@ -38,7 +43,7 @@ public class CarTest {
   @Test
   void shouldStart_WithoutExceptions_2() {
 
-    Car car = new Car(engine, fuelTank);
+   // Car car = new Car(engine, fuelTank);
 
     car.start();
   }
